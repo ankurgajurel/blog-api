@@ -14,14 +14,12 @@ export async function getEachBlog(req: Request, res: Response) {
     })
 
     if (!blog) {
-        res.status(404).send({
+        return res.status(404).send({
             message: 'Blog not found',
         })
-
-        return
     }
 
-    res.status(200).send({
+    return res.status(200).send({
         message: 'Blog',
         data: blog,
     })

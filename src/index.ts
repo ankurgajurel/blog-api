@@ -1,5 +1,5 @@
 import { configDotenv } from 'dotenv'
-configDotenv({ path: './.env.local' })
+configDotenv({ path: './.env.local' || '.env' })
 
 import * as express from 'express'
 import { DatabaseConfig } from './dataSource'

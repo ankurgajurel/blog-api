@@ -6,11 +6,9 @@ export async function createNewAuthor(req: Request, res: Response) {
     const { name, email } = req.body
 
     if (!name || !email) {
-        res.status(400).send({
+        return res.status(400).send({
             message: 'Name and email are required',
         })
-
-        return
     }
 
     const authorRepository = DatabaseConfig.getRepository(Author)
@@ -21,11 +19,9 @@ export async function createNewAuthor(req: Request, res: Response) {
         },
     })
     if (authorExists) {
-        res.status(400).send({
+        return res.status(400).send({
             message: 'Author with this email already exists',
         })
-
-        return
     }
 
     const newAuthor = authorRepository.create({
@@ -34,10 +30,8 @@ export async function createNewAuthor(req: Request, res: Response) {
     })
     await authorRepository.save(newAuthor)
 
-    res.status(201).send({
+    return res.status(201).send({
         message: 'Author created successfully',
         data: newAuthor,
     })
-
-    return
 }

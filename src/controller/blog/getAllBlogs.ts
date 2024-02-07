@@ -7,7 +7,7 @@ export async function getAllBlogs(req: Request, res: Response) {
 
     const blogs = await blogRepository.find()
 
-    res.status(200).send({
+    return res.status(200).send({
         message: 'All blogs',
         data: blogs,
     })

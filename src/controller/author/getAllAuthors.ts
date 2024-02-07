@@ -7,10 +7,8 @@ export async function getAllAuthors(req: Request, res: Response) {
 
     const authors = await authorRepository.find()
 
-    res.status(200).send({
+    return res.status(200).send({
         message: 'Authors data',
         data: authors,
     })
-
-    return
 }

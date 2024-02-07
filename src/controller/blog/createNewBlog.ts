@@ -7,11 +7,9 @@ export async function createNewBlog(req: Request, res: Response) {
     const { title, content, authorId } = req.body
 
     if (!title || !content || !authorId) {
-        res.status(400).send({
+        return res.status(400).send({
             message: 'Title, content and author id are required',
         })
-
-        return
     }
 
     const authorRepository = DatabaseConfig.getRepository(Author)
@@ -23,11 +21,9 @@ export async function createNewBlog(req: Request, res: Response) {
     })
 
     if (!author) {
-        res.status(404).send({
+        return res.status(404).send({
             message: 'Author not found',
         })
-
-        return
     }
 
     const blogRepository = DatabaseConfig.getRepository(Blog)
@@ -39,11 +35,9 @@ export async function createNewBlog(req: Request, res: Response) {
     })
 
     if (existingBlog) {
-        res.status(409).send({
+        return res.status(409).send({
             message: 'Blog already exists',
         })
-
-        return
     }
 
     const newBlog = blogRepository.create({
@@ -55,10 +49,8 @@ export async function createNewBlog(req: Request, res: Response) {
 
     await blogRepository.save(newBlog)
 
-    res.status(201).send({
+    return res.status(201).send({
         message: 'New blog created',
         data: newBlog,
     })
-
-    return
 }
