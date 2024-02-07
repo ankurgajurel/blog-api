@@ -1,6 +1,6 @@
 import { Response, Request } from 'express'
 import { DatabaseConfig } from '../../dataSource'
-import { Blog } from '../../entity/Blog'
+import { Blog } from '../../entity/Blog.entity'
 
 export async function deleteBlog(req: Request, res: Response) {
     const { id } = req.body

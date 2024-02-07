@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { DatabaseConfig } from '../../dataSource'
-import { Blog } from '../../entity/Blog'
+import { Blog } from '../../entity/Blog.entity'
 
 export async function getEachBlog(req: Request, res: Response) {
     const { id } = req.body

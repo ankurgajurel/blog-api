@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { createNewBlog } from './createNewBlog'
-import { getAllBlogs } from './getAllBlogs'
-import { deleteBlog } from './deleteBlog'
-import { getEachBlog } from './getEachBlog'
+import { createNewBlog } from './createNewBlog.controller'
+import { getAllBlogs } from './getAllBlogs.controller'
+import { deleteBlog } from './deleteBlog.controller'
+import { getEachBlog } from './getEachBlog.controller'
 
 const blogRouters: Router = Router()
 

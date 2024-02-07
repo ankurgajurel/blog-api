@@ -1,8 +1,8 @@
 import { Response, Request } from 'express'
-import { Author } from '../../entity/Author'
 import { DatabaseConfig } from '../../dataSource'
+import { Author } from '../../entity/Author.entity'
 
-export async function deleteAuthor(req: Request, res: Response) {
+export async function getBlogsByAuthor(req: Request, res: Response) {
     const { id } = req.body
 
     if (!id) {
@@ -25,10 +25,8 @@ export async function deleteAuthor(req: Request, res: Response) {
         })
     }
 
-    await authorRepository.remove(author)
-
     return res.status(200).send({
-        message: 'Author deleted successfully',
-        data: author,
+        message: 'Author blogs',
+        data: author.blogs ? author.blogs : [],
     })
 }

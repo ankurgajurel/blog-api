@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { Blog } from '../../entity/Blog'
+import { Blog } from '../../entity/Blog.entity'
 import { DatabaseConfig } from '../../dataSource'
 
 export async function getAllBlogs(req: Request, res: Response) {

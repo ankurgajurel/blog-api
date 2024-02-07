@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { DatabaseConfig } from '../../dataSource'
-import { Author } from '../../entity/Author'
+import { Author } from '../../entity/Author.entity'
 
 export async function getAuthorData(req: Request, res: Response) {
     const { id } = req.body

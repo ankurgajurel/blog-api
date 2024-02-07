@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { Author } from '../../entity/Author'
+import { Author } from '../../entity/Author.entity'
 import { DatabaseConfig } from '../../dataSource'
 
 export async function createNewAuthor(req: Request, res: Response) {

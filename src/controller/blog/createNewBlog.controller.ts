@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { DatabaseConfig } from '../../dataSource'
-import { Author } from '../../entity/Author'
-import { Blog } from '../../entity/Blog'
+import { Author } from '../../entity/Author.entity'
+import { Blog } from '../../entity/Blog.entity'
 
 export async function createNewBlog(req: Request, res: Response) {
     const { title, content, authorId } = req.body

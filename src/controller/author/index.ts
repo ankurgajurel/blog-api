@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import { createNewAuthor } from './createNewAuthor'
-import { deleteAuthor } from './deleteAuthor'
-import { getAuthorData } from './getAuthorData'
-import { getAllAuthors } from './getAllAuthors'
-import { getBlogsByAuthor } from './getBlogsByAuthor'
+import { createNewAuthor } from './createNewAuthor.controller'
+import { deleteAuthor } from './deleteAuthor.controller'
+import { getAuthorData } from './getAuthorData.controller'
+import { getAllAuthors } from './getAllAuthors.controller'
+import { getBlogsByAuthor } from './getBlogsByAuthor.controller'
 
 const authorRouters: Router = Router()
 
