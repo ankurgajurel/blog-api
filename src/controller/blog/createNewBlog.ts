@@ -1,49 +1,49 @@
-import { Request, Response } from 'express';
-import { DatabaseConfig } from '../../dataSource';
-import { Author } from '../../entity/Author';
-import { Blog } from '../../entity/Blog';
+import { Request, Response } from 'express'
+import { DatabaseConfig } from '../../dataSource'
+import { Author } from '../../entity/Author'
+import { Blog } from '../../entity/Blog'
 
 export async function createNewBlog(req: Request, res: Response) {
-    const { title, content, authorId } = req.body;
+    const { title, content, authorId } = req.body
 
     if (!title || !content || !authorId) {
         res.status(400).send({
-            message: 'Title, content and author id are required'
-        });
+            message: 'Title, content and author id are required',
+        })
 
-        return;
+        return
     }
 
-    const authorRepository = DatabaseConfig.getRepository(Author);
+    const authorRepository = DatabaseConfig.getRepository(Author)
 
     const author = await authorRepository.findOne({
         where: {
-            id: authorId
-        }
-    });
+            id: authorId,
+        },
+    })
 
     if (!author) {
         res.status(404).send({
-            message: 'Author not found'
-        });
+            message: 'Author not found',
+        })
 
-        return;
+        return
     }
 
-    const blogRepository = DatabaseConfig.getRepository(Blog);
+    const blogRepository = DatabaseConfig.getRepository(Blog)
 
     const existingBlog = await blogRepository.findOne({
         where: {
-            title
-        }
-    });
+            title,
+        },
+    })
 
     if (existingBlog) {
         res.status(409).send({
-            message: 'Blog already exists'
-        });
+            message: 'Blog already exists',
+        })
 
-        return;
+        return
     }
 
     const newBlog = blogRepository.create({
@@ -51,14 +51,14 @@ export async function createNewBlog(req: Request, res: Response) {
         authorId,
         publishedDate: new Date().toISOString(),
         content,
-    });
+    })
 
-    await blogRepository.save(newBlog);
+    await blogRepository.save(newBlog)
 
     res.status(201).send({
         message: 'New blog created',
-        data: newBlog
-    });
+        data: newBlog,
+    })
 
-    return;
+    return
 }

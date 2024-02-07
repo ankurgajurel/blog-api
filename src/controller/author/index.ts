@@ -13,5 +13,4 @@ authorRouters.get('/', getAuthorData)
 authorRouters.get('/blogs', getBlogsByAuthor)
 authorRouters.get('/all', getAllAuthors)
 
-
 export default authorRouters

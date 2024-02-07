@@ -1,16 +1,13 @@
-import { Request, Response } from "express";
-import { Author } from "../../entity/Author";
-import { DatabaseConfig } from "../../dataSource";
+import { Request, Response } from 'express'
+import { Author } from '../../entity/Author'
+import { DatabaseConfig } from '../../dataSource'
 
 export async function createNewAuthor(req: Request, res: Response) {
-    const {
-        name,
-        email
-    } = req.body
+    const { name, email } = req.body
 
     if (!name || !email) {
         res.status(400).send({
-            message: 'Name and email are required'
+            message: 'Name and email are required',
         })
 
         return
@@ -20,12 +17,12 @@ export async function createNewAuthor(req: Request, res: Response) {
 
     const authorExists = await authorRepository.findOne({
         where: {
-            email
-        }
+            email,
+        },
     })
     if (authorExists) {
         res.status(400).send({
-            message: 'Author with this email already exists'
+            message: 'Author with this email already exists',
         })
 
         return
@@ -33,13 +30,13 @@ export async function createNewAuthor(req: Request, res: Response) {
 
     const newAuthor = authorRepository.create({
         name,
-        email
+        email,
     })
     await authorRepository.save(newAuthor)
-    
+
     res.status(201).send({
         message: 'Author created successfully',
-        data: newAuthor
+        data: newAuthor,
     })
 
     return

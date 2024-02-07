@@ -11,5 +11,4 @@ blogRouters.get('/all', getAllBlogs)
 blogRouters.delete('/', deleteBlog)
 blogRouters.get('/', getEachBlog)
 
-
 export default blogRouters

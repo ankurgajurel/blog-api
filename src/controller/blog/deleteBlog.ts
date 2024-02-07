@@ -1,29 +1,29 @@
-import { Response, Request } from 'express';
-import { DatabaseConfig } from '../../dataSource';
-import { Blog } from '../../entity/Blog';
+import { Response, Request } from 'express'
+import { DatabaseConfig } from '../../dataSource'
+import { Blog } from '../../entity/Blog'
 
 export async function deleteBlog(req: Request, res: Response) {
-    const { id } = req.body;
+    const { id } = req.body
 
-    const blogRepository = DatabaseConfig.getRepository(Blog);
+    const blogRepository = DatabaseConfig.getRepository(Blog)
 
     const blog = await blogRepository.findOne({
         where: {
-            id
-        }
-    });
+            id,
+        },
+    })
 
     if (!blog) {
         res.status(404).send({
-            message: 'Blog not found'
-        });
+            message: 'Blog not found',
+        })
 
-        return;
+        return
     }
 
-    await blogRepository.remove(blog);
+    await blogRepository.remove(blog)
 
     res.status(200).send({
-        message: 'Blog deleted'
-    });
+        message: 'Blog deleted',
+    })
 }

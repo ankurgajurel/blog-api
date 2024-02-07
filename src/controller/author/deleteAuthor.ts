@@ -1,13 +1,13 @@
-import { Response, Request } from "express"
-import { Author } from "../../entity/Author"
-import { DatabaseConfig } from "../../dataSource"
+import { Response, Request } from 'express'
+import { Author } from '../../entity/Author'
+import { DatabaseConfig } from '../../dataSource'
 
 export async function deleteAuthor(req: Request, res: Response) {
     const { id } = req.body
 
     if (!id) {
         res.status(400).send({
-            message: 'Author id is required'
+            message: 'Author id is required',
         })
 
         return
@@ -17,13 +17,13 @@ export async function deleteAuthor(req: Request, res: Response) {
 
     const author = await authorRepository.findOne({
         where: {
-            id
-        }
+            id,
+        },
     })
 
     if (!author) {
         res.status(404).send({
-            message: 'Author not found'
+            message: 'Author not found',
         })
 
         return
@@ -33,7 +33,7 @@ export async function deleteAuthor(req: Request, res: Response) {
 
     res.status(200).send({
         message: 'Author deleted successfully',
-        data: author
+        data: author,
     })
 
     return

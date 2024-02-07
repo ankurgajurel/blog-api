@@ -1,17 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, } from 'typeorm';
-import { Blog } from './Blog';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
+import { Blog } from './Blog'
 
 @Entity()
 export class Author {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: number
 
     @Column()
-    name: string;
+    name: string
 
     @Column()
-    email: string;
+    email: string
 
     @OneToMany(() => Blog, (blog) => blog.authorId)
-    blogs: Blog[];
+    blogs: Blog[]
 }

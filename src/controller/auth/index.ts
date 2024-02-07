@@ -1,11 +1,11 @@
-import { Router } from "express"
+import { Router } from 'express'
 
-import { signup } from "./signup"
-import { login } from "./login"
+import { signup } from './signup'
+import { login } from './login'
 
-const authRouters: Router = Router();
+const authRouters: Router = Router()
 
-authRouters.post('/signup', signup);
-authRouters.post('/login', login);
+authRouters.post('/signup', signup)
+authRouters.post('/login', login)
 
-export default authRouters;
+export default authRouters
