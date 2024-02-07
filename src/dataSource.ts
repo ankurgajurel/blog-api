@@ -1,7 +1,7 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { Author } from "./entity/Author"
-import { Blog } from "./entity/Blog"
+
+import { Author, Blog, Users } from './entity'
 
 export const DatabaseConfig = new DataSource({
     type: "postgres",
@@ -10,6 +10,6 @@ export const DatabaseConfig = new DataSource({
     username: `${process.env.DB_USER}`,
     password: `${process.env.DB_PASS}`,
     database: `${process.env.DB_NAME}`,
-    entities: [Author, Blog],
+    entities: [Author, Blog, Users],
     synchronize: true
 })

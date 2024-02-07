@@ -1,5 +1,5 @@
 import { configDotenv } from "dotenv"
-configDotenv()
+configDotenv({ path: './.env.local' })
 
 import * as express from "express"
 import { DatabaseConfig } from "./dataSource"
@@ -14,6 +14,7 @@ DatabaseConfig.initialize().then(async () => {
 
     app.use('/api/v1/author', routers.authorRouters)
     app.use('/api/v1/blog', routers.blogRouters)
+    app.use('/api/v1/auth', routers.authRouters)
 
     app.listen(3000, () => {
         console.log("server is running on port 3000")
